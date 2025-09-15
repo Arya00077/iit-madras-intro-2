@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>IIT Madras Intro</title>
+  <style>
+    body {
+      margin: 0;
+      overflow: hidden;
+      background: black;
+      font-family: "Georgia", serif;
+      color: white;
+      text-align: center;
+    }
+
+    .container {
+      width: 100%;
+      height: 100vh;
+      position: relative;
+      overflow: hidden;
+    }
+
+    /* Quotes */
+    .quote {
+      position: absolute;
+      top: 40%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      font-size: 24px;
+      opacity: 0;
+      animation: fadeInOut 6s ease forwards;
+    }
+
+    .quote:nth-child(1) { animation-delay: 0s; }
+    .quote:nth-child(2) { animation-delay: 6s; }
+    .quote:nth-child(3) { animation-delay: 12s; }
+
+    @keyframes fadeInOut {
+      0% { opacity: 0; }
+      10% { opacity: 1; }
+      70% { opacity: 1; }
+      100% { opacity: 0; }
+    }
+
+    /* Sunrise Sun */
+    .sun {
+      width: 150px;
+      height: 150px;
+      background: radial-gradient(circle, #ffcc00, #ff6600);
+      border-radius: 50%;
+      position: absolute;
+      bottom: -200px;
+      left: 50%;
+      transform: translateX(-50%);
+      animation: rise 8s ease-in-out forwards;
+      animation-delay: 18s;
+      box-shadow: 0 0 100px 40px rgba(255, 204, 0, 0.6);
+    }
+    @keyframes rise { to { bottom: 200px; } }
+
+    /* Morning glow overlay */
+    .glow {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: radial-gradient(circle at center bottom, rgba(255, 200, 0, 0.4), transparent 70%);
+      opacity: 0;
+      animation: glowUp 6s ease forwards;
+      animation-delay: 18s;
+      pointer-events: none;
+    }
+    @keyframes glowUp {
+      to { opacity: 1; }
+    }
+
+    /* Clouds */
+    .cloud {
+      position: absolute;
+      background: white;
+      border-radius: 50%;
+      opacity: 0.7;
+      animation: moveClouds 50s linear infinite;
+    }
+    .cloud::before,
+    .cloud::after {
+      content: '';
+      position: absolute;
+      background: white;
+      border-radius: 50%;
+    }
+    .cloud1 { width: 120px; height: 60px; top: 80px; left: -200px; }
+    .cloud2 { width: 150px; height: 80px; top: 150px; left: -250px; }
+    .cloud3 { width: 100px; height: 50px; top: 220px; left: -180px; animation-delay: 10s; }
+    .cloud4 { width: 130px; height: 70px; top: 300px; left: -220px; animation-delay: 20s; }
+
+    .cloud::before { width: 80px; height: 80px; top: -20px; left: 10px; }
+    .cloud::after { width: 60px; height: 60px; top: -10px; left: 60px; }
+
+    @keyframes moveClouds { to { transform: translateX(120vw); } }
+
+    /* Birds */
+    .bird {
+      position: absolute;
+      width: 40px; height: 20px;
+      background: transparent;
+      border-top: 3px solid black;
+      border-left: 3px solid transparent;
+      border-right: 3px solid transparent;
+      transform: rotate(-20deg);
+      animation: fly 14s linear infinite;
+    }
+    .bird::after {
+      content: '';
+      position: absolute;
+      top: 0; left: 20px;
+      width: 40px; height: 20px;
+      border-top: 3px solid black;
+      transform: rotate(40deg);
+    }
+    .bird1 { top: 200px; left: -60px; animation-delay: 18s; }
+    .bird2 { top: 250px; left: -100px; animation-delay: 22s; }
+    .bird3 { top: 150px; left: -80px; animation-delay: 25s; }
+
+    @keyframes fly {
+      to { transform: translateX(120vw) translateY(-50px); }
+    }
+
+    /* Logo + Text */
+    .logo {
+      position: absolute;
+      top: 50%; left: 50%;
+      transform: translate(-50%, -50%);
+      opacity: 0;
+      animation: showLogo 3s ease forwards;
+      animation-delay: 26s;
+    }
+    .logo-circle {
+      width: 200px; height: 200px;
+      border-radius: 50%;
+      background: maroon;
+      margin: auto;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-size: 22px;
+      font-weight: bold;
+      box-shadow: 0 0 50px gold;
+    }
+    .tagline {
+      margin-top: 20px;
+      font-size: 20px;
+      color: gold;
+    }
+    @keyframes showLogo {
+      from { opacity: 0; transform: translate(-50%, -60%) scale(0.5); }
+      to { opacity: 1; transform: translate(-50%, -50%) scale(1); }
+    }
+
+    /* Outro Text */
+    .outro {
+      position: absolute;
+      bottom: 50px;
+      left: 50%;
+      transform: translateX(-50%);
+      font-size: 40px;
+      font-weight: bold;
+      color: red;
+      text-shadow: 2px 2px 5px yellow;
+      opacity: 0;
+      animation: outroFlash 3s infinite;
+      animation-delay: 32s;
+    }
+    @keyframes outroFlash {
+      0%, 100% { opacity: 0; }
+      50% { opacity: 1; }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <!-- Quotes -->
+    <div class="quote">“Knowledge is power. Knowledge shared is power multiplied.”</div>
+    <div class="quote">“Excellence is not a skill, it’s an attitude.”</div>
+    <div class="quote">“Proud to be an IITian.”</div>
+
+    <!-- Sunrise + Glow -->
+    <div class="sun"></div>
+    <div class="glow"></div>
+
+    <!-- Clouds -->
+    <div class="cloud cloud1"></div>
+    <div class="cloud cloud2"></div>
+    <div class="cloud cloud3"></div>
+    <div class="cloud cloud4"></div>
+
+    <!-- Birds -->
+    <div class="bird bird1"></div>
+    <div class="bird bird2"></div>
+    <div class="bird bird3"></div>
+
+    <!-- Logo -->
+    <div class="logo">
+      <div class="logo-circle">IIT MADRAS</div>
+      <div class="tagline">Proud to be an IITian</div>
+    </div>
+
+    <!-- Outro Text -->
+    <div class="outro">PADH LE BDSK KHE</div>
+  </div>
+</body>
+</html>
